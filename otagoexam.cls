@@ -353,7 +353,7 @@ The total number of marks for this exam is \totalmarks{}}
 }
 
 %---------------------------------------------------------------------
-% Definition of the questions environment used for the \question command
+% Definition of the question environment
 %---------------------------------------------------------------------
 \let\olditem\item
 
@@ -368,7 +368,7 @@ The total number of marks for this exam is \totalmarks{}}
   }
 
 %---------------------------------------------------------------------
-% Definition of the subquestions environment used for the \question command
+% Definition of the subquestions environment
 %---------------------------------------------------------------------
 \newenvironment{subquestions}
     {\renewcommand\item[2][]{\olditem ##2\ifthenelse{\equal{##1}{}}{}{\addmarks{##1}}}
