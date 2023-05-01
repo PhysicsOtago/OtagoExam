@@ -5,7 +5,8 @@
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesClass{otagoexam}[2005/01/01 UoO Physics Exam v0.1, by mdbarrett]
 %\ProvidesClass{otagoexam}[2012/05/06 UoO Physics Exams v0.2, by Jevon]
-\ProvidesClass{otagoexam}[2012/05/06 UoO Sciences Exams v0.3, by lechszym]
+%\ProvidesClass{otagoexam}[2023/04/05 UoO Sciences Exams v0.3, by lechszym]
+\ProvidesClass{otagoexam}[2023/05/01 UoO Sciences Exams v0.4, by lechszym]
 %---------------------------------------------------------------------
 % Initial Code
 %----------------------------------------------------------
@@ -32,9 +33,9 @@
 \setboolean{embargoed}{true}
 }
 
-\newboolean{draft}
-\DeclareOption{draft}{
-\setboolean{draft}{true}
+\newboolean{answers}
+\DeclareOption{answers}{
+\setboolean{answers}{true}
 }
 
 \newboolean{dev}
@@ -45,6 +46,11 @@
 \newboolean{marginnote}
 \DeclareOption{marginnote}{
 \setboolean{marginnote}{true}
+}
+
+\newboolean{manualpagebreaks}
+\DeclareOption{manualpagebreaks}{
+\setboolean{manualpagebreaks}{true}
 }
 
 
@@ -106,7 +112,7 @@
 %---------------------------------------------------------------------
 \newtotcounter{totalmarks}
 \setcounter{totalmarks}{0}
-\newcommand{\totalmarks}{\total{totalmarks}}
+\newcommand{\totalmarks}[1]{\ifthenelse{\equal{#1}{}}{\total{totalmarks}}{#1}}
 
 %---------------------------------------------------------------------
 % This extremely lengthy definition provides the front-page-making
@@ -351,19 +357,22 @@ The total number of marks for this exam is \totalmarks{}}
 %---------------------------------------------------------------------
 \let\olditem\item
 
-\newenvironment{questions}
+\newenvironment{question}
   {
-    \enumerate[align=left, leftmargin=0pt, labelindent=\parindent, listparindent=\parindent, labelwidth=0pt, itemindent=!]\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}\setlength{\leftmargin}{0pt}%
-    \setcounter{enumi}{\value{examquestion}}
+    \enumerate[align=left, leftmargin=*, labelindent=\parindent, listparindent=\parindent, labelwidth=*, itemindent=!]
+    %\setlength{\itemsep}{0pt}%\setlength{\parskip}{0pt}%\setlength{\parsep}{0pt}%\setlength{\leftmargin}{0pt}%
+    \setcounter{enumi}{\value{examquestion}}\item
   }
-  {\setcounter{examquestion}{\value{enumi}}\endenumerate}
+  {\setcounter{examquestion}{\value{enumi}}\endenumerate
+  \ifthenelse{\boolean{manualpagebreaks}}{}{\pagebreak}    
+  }
 
 %---------------------------------------------------------------------
 % Definition of the subquestions environment used for the \question command
 %---------------------------------------------------------------------
 \newenvironment{subquestions}
     {\renewcommand\item[2][]{\olditem ##2\ifthenelse{\equal{##1}{}}{}{\addmarks{##1}}}
-     \enumerate}
+    \enumerate[]}
     {\endenumerate}
 
 %---------------------------------------------------------------------
@@ -372,20 +381,11 @@ The total number of marks for this exam is \totalmarks{}}
 \newcommand{\answer}[1]{\begin{sloppypar}\color{red} #1\color{black}\end{sloppypar}}
 
 %---------------------------------------------------------------------
-% If not in draf mode, redefine \answer to show nothing
+% If not in answer mode, redefine \answer to show nothing
 %---------------------------------------------------------------------
-\ifthenelse{\boolean{draft}}{}{\renewcommand{\answer}[1]{}}
+\ifthenelse{\boolean{answers}}{}{\renewcommand{\answer}[1]{}}
 
 
-%---------------------------------------------------------------------
-% Definition of the \question command
-%---------------------------------------------------------------------
-\newcommand{\question}[1]{
-    \begin{questions}
-       \item {#1}     
-    \end{questions}
-    \pagebreak
-}
 
 
 % -------------------------

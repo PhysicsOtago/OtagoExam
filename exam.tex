@@ -1,7 +1,8 @@
-\documentclass[draft]{otagoexam}
+\documentclass[answers]{otagoexam}
 % Class options:
-%   draft - shows answers
+%   answers - shows answers (remove option to hide answers)
 %   embargoed - embargoed exam mode
+%   manualpagebreaks - disables automatic page breaks between questions  
 
 % Extra packages
 \usepackage{graphicx}
@@ -18,7 +19,7 @@
 
 %If you don't define any of these following, defaults show here will be used 
 
-% Instructions: layout your instructions here.  You can use \showmarks{<marks>} command to show marks without counting them towards the total.  The \totalmarks{} command gives a sum of all marks from \addmarks[<mark>] and \items[<mark>]commands.
+% Instructions: layout your instructions here.  You can use \showmarks{<marks>} command to show marks without counting them towards the total.  The \totalmarks{} command gives a sum of all marks from \addmarks[<mark>] and \items[<mark>]commands.  If you'd want auto-summed marks, place your manual mark value in the command below - ex. \totalmarks{60} to show 60 marks regardless of the auto-sum.
 
 \instructions{
   Candidates should answer \textbf{All} questions
@@ -59,6 +60,7 @@
 % Title page
 \maketitle
 
+
 % Uncomment this if you need physical constants page (can reference it with \ref{physicalconstants})
 %\physicalconstants
 
@@ -70,10 +72,12 @@
 
 To add a section to the exam use the \verb$\section{}$ command.  Sections are numbered with upper-case letters.  Exams scripts do not have to have sections.  To specify marks for the whole section use \verb$\addmarks{<mark>}$ command at the end of the section paragraph.\addmarks{12}
 
-\question{To create a question use the \texttt{\textbackslash question\{<question text>\}} command.  Questions are numbered with Arabic numerals.
+\begin{question}
+
+    Create a single question within the \texttt{\textbackslash begin\{question\}}...\texttt{\textbackslash end\{question\}} environment.  Questions are numbered with Arabic numerals.
 
     \begin{subquestions}
-        \item List sub-questions using the \texttt{subquestions} environment environment within the question text.
+        \item List sub-questions using the \texttt{subquestions} environment within the question text.
         \item Sub-questions are numbered with lower-case letters.
 
         \item{
@@ -85,7 +89,10 @@ To add a section to the exam use the \verb$\section{}$ command.  Sections are nu
         
     \end{subquestions}
 
-}
+
+\end{question}
+
+
 
 % Section with a title
 \section{Title}
@@ -93,7 +100,9 @@ To add a section to the exam use the \verb$\section{}$ command.  Sections are nu
 To create a section with a title use the \verb$\section{<title text>}$ command.
 
 % Marked question
-\question{Question numbering continues regardless of the sections.  To specify marks for the entire question use the \texttt{\textbackslash addmarks\{<mark>\}} command at the end of the question paragraph.\addmarks{6}
+\begin{question}
+
+    Question numbering continues regardless of the sections.  To specify marks for the entire question use the \texttt{\textbackslash addmarks\{<mark>\}} command at the end of the question paragraph.\addmarks{6}
 
     \begin{subquestions}
         \item List sub-questions using the \texttt{subquestions} environment environment within the question text.
@@ -107,10 +116,12 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
         }
         
     \end{subquestions}
-}
+\end{question}
 
 % Marked sub-questions
-\question{Each question starts on a new page.  To create a question with marks per sub-question use the \texttt{\textbackslash question\{<question text>\}} command and then specify marks per item of the \texttt{subquestions} environment using the \texttt{\textbackslash item{[}mark{]} <item text>} syntax.
+\begin{question}
+    
+    Each question starts on a new page.  To create a question with marks per sub-question specify marks per item of the \texttt{subquestions} environment using the \texttt{\textbackslash item{[}mark{]} <item text>} syntax.
 
     \begin{subquestions}
         \item[3] List sub-questions using the \texttt{subquestions} environment within the question text.
@@ -125,17 +136,19 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
         
     \end{subquestions}
 
-}
+\end{question}
 
 % Question with answers
-\question{To include answers use the \texttt{\textbackslash answer\{<answer text>\} command} under a question or sub-question.  Answers are printed in red and they show up on the pdf only when \texttt{draft} option is passed to the \texttt{otagoexam} document class.
+\begin{question}
+
+    To include answers use the \texttt{\textbackslash answer\{<answer text>\} command} within a question or under a sub-question.  Answers are printed in red and they show up on the pdf only when \texttt{answers} option is passed to the \texttt{otagoexam} document class.
 
     \begin{subquestions}
         \item[3] Sub-question
 
         \answer{You can provide answer for each sub-question.
             \begin{itemize}
-                \item To included mark break-down for answers, use the \texttt{\textbackslash showMarks\{<marks>\} command} \showmarks{1.5} 
+                \item To include a mark break-down for an answer, use the \texttt{\textbackslash showMarks\{<marks>\} command} \showmarks{1.5} 
                 \item The marks in \texttt{\textbackslash showMarks\{<marks>\} command} do not affect the marks total. \showmarks{1.5} 
             \end{itemize}
         }
@@ -145,9 +158,9 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
 
     \answer{To add an answer at the end of the question, make sure its within the question body.}
 
-    \answer{All answers are removed in the final (no draft option) \texttt{otagoexam} document class mode.}
+    \answer{All answers are removed in the (no \texttt{answers} option) \texttt{otagoexam} document class mode.}
 
-}
+\end{question}
 
 % This command adds the "please do not turn over" page at the end 
 % inserting a blank page (if needed) so that the "please do not turn over"
