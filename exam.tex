@@ -1,0 +1,158 @@
+\documentclass[draft]{otagoexam}
+% Class options:
+%   draft - shows answers
+%   embargoed - embargoed exam mode
+
+% Extra packages
+\usepackage{graphicx}
+
+
+%These fields are required
+\department{Department}
+\papercode{Paper code}
+\papertitle{Paper title}
+\paperyear{2023}
+\semester{Teaching period} %Semester One/Semester Two/Summer School
+\timelimit{3 HOURS}
+
+
+%If you don't define any of these following, defaults show here will be used 
+
+% Instructions: layout your instructions here.  You can use \showmarks{<marks>} command to show marks without counting them towards the total.  The \totalmarks{} command gives a sum of all marks from \addmarks[<mark>] and \items[<mark>]commands.
+
+\instructions{
+  Candidates should answer \textbf{All} questions
+
+  \vspace{0.3cm}
+  Marks are shown thus: \showmarks{2}
+
+  \vspace{0.3cm}
+  The total number of marks for this exam is \totalmarks{}
+}
+
+% Material provided (default)
+\providedmaterial{Nil}
+
+% Calculators (default)
+\calculators{\nocalculators} 
+
+% Other options for calculators
+%\calculators{\anymodel} %Any model without networking
+%\calculators{\listA}    %List A calculators
+%\calculators{\listB}    %List B calculators
+
+% Permission for additional material (default)
+\permittedmaterial{No additional material}
+
+% Other instructions (used only in non-embargoed mode)
+\otherinstructions{Nil}
+
+% Embargo instructions (used only in embargo mode)
+\embargoinstructions{Hand in entire exam attached to answer book(s)}
+
+
+
+
+
+\begin{document}
+
+% Title page
+\maketitle
+
+% Uncomment this if you need physical constants page (can reference it with \ref{physicalconstants})
+%\physicalconstants
+
+% Uncomment this if you need formulae page (can reference it with \ref{formulae})
+%\formulae
+
+% Section without a title, marked.
+\section{}
+
+To add a section to the exam use the \verb$\section{}$ command.  Sections are numbered with upper-case letters.  Exams scripts do not have to have sections.  To specify marks for the whole section use \verb$\addmarks{<mark>}$ command at the end of the section paragraph.\addmarks{12}
+
+\question{To create a question use the \texttt{\textbackslash question\{<question text>\}} command.  Questions are numbered with Arabic numerals.
+
+    \begin{subquestions}
+        \item List sub-questions using the \texttt{subquestions} environment environment within the question text.
+        \item Sub-questions are numbered with lower-case letters.
+
+        \item{
+            \begin{subquestions}
+                \item Nesting \texttt{subquestion} environments is fine.
+                \item Second level sub-questions are numbered with Roman numerals.
+            \end{subquestions}
+        }
+        
+    \end{subquestions}
+
+}
+
+% Section with a title
+\section{Title}
+
+To create a section with a title use the \verb$\section{<title text>}$ command.
+
+% Marked question
+\question{Question numbering continues regardless of the sections.  To specify marks for the entire question use the \texttt{\textbackslash addmarks\{<mark>\}} command at the end of the question paragraph.\addmarks{6}
+
+    \begin{subquestions}
+        \item List sub-questions using the \texttt{subquestions} environment environment within the question text.
+        \item Sub-questions are numbered with lower-case letters.
+
+        \item{
+            \begin{subquestions}
+                \item Nesting \texttt{subquestion} environments is fine.
+                \item Second level sub-questions are numbered with Roman numerals.
+            \end{subquestions}
+        }
+        
+    \end{subquestions}
+}
+
+% Marked sub-questions
+\question{Each question starts on a new page.  To create a question with marks per sub-question use the \texttt{\textbackslash question\{<question text>\}} command and then specify marks per item of the \texttt{subquestions} environment using the \texttt{\textbackslash item{[}mark{]} <item text>} syntax.
+
+    \begin{subquestions}
+        \item[3] List sub-questions using the \texttt{subquestions} environment within the question text.
+        \item[2]  Sub-questions are numbered with lower-case letters.
+
+        \item{
+            \begin{subquestions}
+                \item[1] Nesting \texttt{subquestion} environments is fine.
+                \item[4] Second level sub-questions are numbered with Roman numerals.   
+            \end{subquestions}
+        }
+        
+    \end{subquestions}
+
+}
+
+% Question with answers
+\question{To include answers use the \texttt{\textbackslash answer\{<answer text>\} command} under a question or sub-question.  Answers are printed in red and they show up on the pdf only when \texttt{draft} option is passed to the \texttt{otagoexam} document class.
+
+    \begin{subquestions}
+        \item[3] Sub-question
+
+        \answer{You can provide answer for each sub-question.
+            \begin{itemize}
+                \item To included mark break-down for answers, use the \texttt{\textbackslash showMarks\{<marks>\} command} \showmarks{1.5} 
+                \item The marks in \texttt{\textbackslash showMarks\{<marks>\} command} do not affect the marks total. \showmarks{1.5} 
+            \end{itemize}
+        }
+
+        \item[2] Another sub-question
+    \end{subquestions}
+
+    \answer{To add an answer at the end of the question, make sure its within the question body.}
+
+    \answer{All answers are removed in the final (no draft option) \texttt{otagoexam} document class mode.}
+
+}
+
+% This command adds the "please do not turn over" page at the end 
+% inserting a blank page (if needed) so that the "please do not turn over"
+% message always lands on an even page (back of the exam).
+\turnoverpage
+
+
+\end{document}
