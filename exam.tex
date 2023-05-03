@@ -1,14 +1,36 @@
 \documentclass[answers]{otagoexam}
-% Class options:
-%   answers - shows answers (remove option to hide answers)
+%%%%%%%%%%%%%%%%%
+% Class options %
+%%%%%%%%%%%%%%%%%
+%   answers - shows answers (remove it to hide answers)
 %   embargoed - embargoed exam mode
-%   manualpagebreaks - disables automatic page breaks between questions  
 
-% Extra packages
+%%%%%%%%%%%%%%%%%%
+% Extra packages %
+%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
 
+%%%%%%%%%%%%
+% Settings %
+%%%%%%%%%%%%
 
-%These fields are required
+% This command specifies the type of break between questions
+% and is set to '\pagebreak', so that each question starts
+% on a new page.  If you want multiple questions per page 
+% (to save trees), you can change the setting to
+% '\vspace{<spacing>}', such as '\vspace{3ex}' for instance,
+% to have some vertical spacing between the questions. 
+% You'll have to place page breaks manually.
+\newcommand{\questionbreak}{\pagebreak}
+
+% This command specifies the type of vertical spacing
+% between subquestions.  The default value is '2ex', you
+% can increase or decrease it as fits.
+\newcommand{\subquestionspacing}{2ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Info for the title page %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \department{Department}
 \papercode{Paper code}
 \papertitle{Paper title}
@@ -17,9 +39,16 @@
 \timelimit{3 HOURS}
 
 
-%If you don't define any of these following, defaults show here will be used 
+% If you don't define any of the following, defaults 
+% shown here will be used 
 
-% Instructions: layout your instructions here.  You can use \showmarks{<marks>} command to show marks without counting them towards the total.  The \totalmarks{} command gives a sum of all marks from \addmarks[<mark>] and \items[<mark>]commands.  If you'd want auto-summed marks, place your manual mark value in the command below - ex. \totalmarks{60} to show 60 marks regardless of the auto-sum.
+% Instructions: layout your instructions here.  You can 
+% use \showmarks{<marks>} command to show marks without
+% counting them towards the total.  The \totalmarks{} 
+% command gives a sum of all marks from \addmarks[<mark>]
+% commands.  If you'd want auto-summed marks, place your
+% manual mark value in the command below - ex.
+% \totalmarks{60} to show 60 marks regardless of auto-sum.
 
 \instructions{
   Candidates should answer \textbf{All} questions
@@ -53,7 +82,9 @@
 
 
 
-
+%%%%%%%%%%%
+% Content %
+%%%%%%%%%%%
 
 \begin{document}
 
@@ -61,10 +92,12 @@
 \maketitle
 
 
-% Uncomment this if you need physical constants page (can reference it with \ref{physicalconstants})
+% Uncomment this if you need physical constants page 
+% (can reference it with \ref{physicalconstants})
 %\physicalconstants
 
-% Uncomment this if you need formulae page (can reference it with \ref{formulae})
+% Uncomment this if you need formulae page (can reference 
+% it with \ref{formulae})
 %\formulae
 
 % Section without a title, marked.
@@ -121,16 +154,18 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
 % Marked sub-questions
 \begin{question}
     
-    Each question starts on a new page.  To create a question with marks per sub-question specify marks per item of the \texttt{subquestions} environment using the \texttt{\textbackslash item{[}mark{]} <item text>} syntax.
+    By default, each question starts on a new page.  To disable auto-page change the\\ \texttt{\textbackslash questionbreak\{\}} setting.  To specify marks per sub-question use\\ \verb$\addmarks{<mark>}$ command at the end of the respective \texttt{item} text.
+    
 
     \begin{subquestions}
-        \item[3] List sub-questions using the \texttt{subquestions} environment within the question text.
-        \item[2]  Sub-questions are numbered with lower-case letters.
+        \item List sub-questions using the \texttt{subquestions} environment within the question text. \addmarks{3}
+        \item Sub-questions are numbered with lower-case letters. \addmarks{2}
 
+        \item To change the vertical spacing between sub-question items change the\\ \texttt{\textbackslash subquestionspacing\{\}} setting. \addmarks{2}
         \item{
             \begin{subquestions}
-                \item[1] Nesting \texttt{subquestion} environments is fine.
-                \item[4] Second level sub-questions are numbered with Roman numerals.   
+                \item Nesting \texttt{subquestion} environments is fine. \addmarks{4}
+                \item Second level sub-questions are numbered with Roman numerals. \addmarks{1}
             \end{subquestions}
         }
         
@@ -144,7 +179,7 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
     To include answers use the \texttt{\textbackslash answer\{<answer text>\} command} within a question or under a sub-question.  Answers are printed in red and they show up on the pdf only when \texttt{answers} option is passed to the \texttt{otagoexam} document class.
 
     \begin{subquestions}
-        \item[3] Sub-question
+        \item Sub-question \addmarks{3}
 
         \answer{You can provide answer for each sub-question.
             \begin{itemize}
@@ -153,7 +188,7 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
             \end{itemize}
         }
 
-        \item[2] Another sub-question
+        \item Another sub-question \addmarks{2}
     \end{subquestions}
 
     \answer{To add an answer at the end of the question, make sure its within the question body.}
@@ -162,9 +197,10 @@ To create a section with a title use the \verb$\section{<title text>}$ command.
 
 \end{question}
 
-% This command adds the "please do not turn over" page at the end 
-% inserting a blank page (if needed) so that the "please do not turn over"
-% message always lands on an even page (back of the exam).
+% This command adds the "please do not turn over"
+% page at the end inserting a blank page (if
+% needed) so that it always lands on an 
+% even page at the back of the exam.
 \turnoverpage
 
 

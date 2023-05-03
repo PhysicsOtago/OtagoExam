@@ -48,10 +48,10 @@
 \setboolean{marginnote}{true}
 }
 
-\newboolean{manualpagebreaks}
-\DeclareOption{manualpagebreaks}{
-\setboolean{manualpagebreaks}{true}
-}
+%\newboolean{manualpagebreaks}
+%\DeclareOption{manualpagebreaks}{
+%\setboolean{manualpagebreaks}{true}
+%}
 
 
 %---------------------------------------------------------------------
@@ -262,7 +262,8 @@ The total number of marks for this exam is \totalmarks{}}
 % Definition of the turn over page
 %---------------------------------------------------------------------
 \newcommand{\turnoverpage}{
-
+    
+    \pagebreak
     \checkoddpage
 
     
@@ -355,24 +356,23 @@ The total number of marks for this exam is \totalmarks{}}
 %---------------------------------------------------------------------
 % Definition of the question environment
 %---------------------------------------------------------------------
-\let\olditem\item
 
 \newenvironment{question}
   {
     \enumerate[align=left, leftmargin=*, labelindent=\parindent, listparindent=\parindent, labelwidth=*, itemindent=!]
-    %\setlength{\itemsep}{0pt}%\setlength{\parskip}{0pt}%\setlength{\parsep}{0pt}%\setlength{\leftmargin}{0pt}%
     \setcounter{enumi}{\value{examquestion}}\item
   }
   {\setcounter{examquestion}{\value{enumi}}\endenumerate
-  \ifthenelse{\boolean{manualpagebreaks}}{}{\pagebreak}    
+  \questionbreak
   }
 
 %---------------------------------------------------------------------
 % Definition of the subquestions environment
 %---------------------------------------------------------------------
+\let\olditem\item
 \newenvironment{subquestions}
-    {\renewcommand\item[2][]{\olditem ##2\ifthenelse{\equal{##1}{}}{}{\addmarks{##1}}}
-    \enumerate[]}
+    {%\let\olditem\item\renewcommand\item[2][]{\olditem ##2\ifthenelse{\equal{##1}{}}{}{\addmarks{##1}}}
+    \enumerate[itemsep=\subquestionspacing]}
     {\endenumerate}
 
 %---------------------------------------------------------------------
