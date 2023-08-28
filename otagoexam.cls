@@ -350,7 +350,7 @@ The total number of marks for this exam is \totalmarks{}}
 }
 
 \newcommand{\anymodel}{
-    Any model of calculator provided this is battery powered, silent, truly portable and free of communication capabilities
+    Any model of calculator provided that is battery powered, silent, truly portable and free of communication capabilities
 }
 
 %---------------------------------------------------------------------
