@@ -24,12 +24,28 @@
 
 \newcommand{\studentid}{}
 \newcommand{\otherinstructionsdefault}{Nil}
-\newcommand{\embargoinstructionsdefault}{}
+\newcommand{\otherinstructionsmcq}{Hand in MCQ answer sheet attached to green attendance receipt}
+\newcommand{\otherinstructionsansbookmcq}{Hand in MCQ answer sheet attached to answer book(s)}
+\newcommand{\otherinstructionsonexam}{Hand in entire exam paper attached to green attendance receipt}
+\newcommand{\otherinstructionsonpinkexam}{Hand in pink section of exam paper attached to green attendance receipt}
+\newcommand{\otherinstructionsmcqroughwork}{Hand in MCQ answer sheet attached to green attendance receipt and answer book (rough work only)}
+\newcommand{\otherinstructionsonexamroughwork}{Hand in entire exam paper attached to green attendance receipt and answer book (rough work only)}
+\newcommand{\otherinstructionsonpinkexamroughwork}{Hand in pink section of exam paper attached to green attendance receipt and answer book (rough work only)}
+\newcommand{\otherinstructionsansbookafour}{Hand in A4 leaflets (rough work only) attached to answer book(s)}
+\newcommand{\otherinstructionsmcqafour}{Hand in MCQ answer sheet attached to green attendance receipt and A4 leaflets (rough work only)}
+\newcommand{\otherinstructionsonexamafour}{Hand in entire exam paper attached to green attendance receipt and A4 leaflets (rough work only)}
+\newcommand{\otherinstructionsonpinkexamafour}{Hand in pink section of exam paper attached to green attendance receipt and A4 leaflets (rough work only)}
+
 \newboolean{embargoed}
 
 \DeclareOption{embargoed}{\renewcommand{\studentid}{Student ID: \rule{4cm}{0.15mm}}
-\renewcommand{\otherinstructionsdefault}{}
-\renewcommand{\embargoinstructionsdefault}{Hand in entire exam attached to answer book(s)}
+\renewcommand{\otherinstructionsdefault}{Hand in entire exam attached to answer book(s)}
+\renewcommand{\otherinstructionsmcq}{Hand in entire exam paper attached to MCQ answer sheet and green attendance receipt}
+\renewcommand{\otherinstructionsansbookmcq}{Hand in entire exam attached to MCQ answer sheet and answer book(s)}
+\renewcommand{\otherinstructionsmcqroughwork}{Hand in entire exam paper attached to MCQ answer sheet and green attendance receipt and answer book (rough work only)}
+\renewcommand{\otherinstructionsansbookafour}{Hand in entire exam attached to answer books(s) and A4 leaflets (rough work only)}
+\renewcommand{\otherinstructionsmcqafour}{Hand in entire exam paper attached to MCQ answer sheet and green attendance receipt and A4 leaflets (rough work only)}
+
 \setboolean{embargoed}{true}
 }
 
@@ -93,8 +109,62 @@
 \newcommand{\instructions}[1]{\renewcommand{\@instructions}{#1}}
 \newcommand{\providedmaterial}[1]{\renewcommand{\@providedmaterial}{#1}}
 \newcommand{\permittedmaterial}[1]{\renewcommand{\@permittedmaterial}{#1}}
-\newcommand{\otherinstructions}[1]{\renewcommand{\@otherinstructions}{#1}}
-\newcommand{\embargoinstructions}[1]{\renewcommand{\@embargoinstructions}{#1}}
+\newcommand{\otherinstructions}[2][ansbook]{\renewcommand{\@otherinstructions}{
+
+    \ifthenelse{\equal{#1}{ansbook}}{%
+	\ifthenelse{\equal{#2}{}}{%
+	        \otherinstructionsdefault{}%
+ 	}{%
+
+        	 }%
+    }{%
+        \ifthenelse{\equal{#1}{mcq}}{%
+            \otherinstructionsmcq{}%
+        }{%
+             \ifthenelse{\equal{#1}{ansbook+mcq}}{%
+           	 \otherinstructionsansbookmcq{}%
+       	      }{%
+		 \ifthenelse{\equal{#1}{onexam}}{%
+           	     \otherinstructionsonexam{}%
+	 	 }{%
+		   \ifthenelse{\equal{#1}{onpinkexam}}{%
+           	     	 \otherinstructionsonpinkexam{}%
+	 	   }{%
+   		     \ifthenelse{\equal{#1}{mcq+roughwork}}{%
+           	     	  \otherinstructionsmcqroughwork{}%
+	 	     }{%
+   		       \ifthenelse{\equal{#1}{onexam+roughwork}}{%
+             	     	    \otherinstructionsonexamroughwork{}%
+ 	 	       }{%
+            	          \ifthenelse{\equal{#1}{onpinkexam+roughwork}}{%
+             	     	       \otherinstructionsonpinkexamroughwork{}%
+ 	 	           }{%
+	            	      \ifthenelse{\equal{#1}{ansbook+a4}}{%
+             	     	          \otherinstructionsansbookafour{}%
+ 	 	               }{%
+            	               	 \ifthenelse{\equal{#1}{mcq+a4}}{%
+             	     	             \otherinstructionsmcqafour{}%
+ 	 	              	 }{%
+            	               	    \ifthenelse{\equal{#1}{onexam+a4}}{%
+             	     	                \otherinstructionsonexamafour{}%
+ 	 	              	    }{%
+	            	                \ifthenelse{\equal{#1}{onpinkexam+a4}}{%
+             	     	                   \otherinstructionsonpinkexamafour{}%
+ 	 	              	        }{%
+            	               	          \vspace{-0.1cm}%
+        	                       	        }% 
+        	                       	    }% 
+		           	  }%
+        	                       }%
+        	                    }%
+        	                }%
+        	              }%
+        	            }%
+        	          }%
+        	      }%
+        }%
+    }%
+\\\\#2}}
 \newcommand{\calculators}[1]{\renewcommand{\@calculators}{#1}}
 
 \setlength{\parindent}{0cm}
@@ -174,7 +244,7 @@
     \underline{Other Instructions:}
     \begin{center}
     \begin{minipage}[c]{135mm}
-    \ifthenelse{\boolean{embargoed}}{\@embargoinstructions}{\@otherinstructions}    
+    \@otherinstructions    
    \end{minipage}
     \end{center}
     \pagebreak}}
@@ -201,7 +271,6 @@ The total number of marks for this exam is \totalmarks{}}
 \newcommand{\@calculators}{No calculators are permitted}
 \newcommand{\@permittedmaterial}{No additional material}
 \newcommand{\@otherinstructions}{\otherinstructionsdefault}
-\newcommand{\@embargoinstructions}{\embargoinstructionsdefault}
 \newboolean{needquestionpagebreak}
 \newboolean{startedquestionsyet}
 \newboolean{donotneedendofpaper}

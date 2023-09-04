@@ -74,12 +74,35 @@
 % Permission for additional material (default)
 \permittedmaterial{No additional material}
 
-% Other instructions (used only in non-embargoed mode)
-\otherinstructions{Nil}
 
-% Embargo instructions (used only in embargo mode)
-\embargoinstructions{Hand in entire exam attached to answer book(s)}
+% Other instructions - these relate to the instructions for how to provide answers on the exam sheets: typically written answers go in the yellow book, multichoice answer onto a green sheet, but there are also options for having answers written on the exam sheet itself.  A number of templates is provided below for common scenarios (comment out the appropriate one).
 
+% Standard exam with the short answers to go into the (yellow) answer book -- when not-embargoed, these instructions are just "Nil"
+\otherinstructions[ansbook]{}
+
+% Multichoice answers only exam
+%\otherinstructions[mcq]{}
+
+% Written answer and multichoice answers exam
+%\otherinstructions[ansbook+mcq]{}
+
+% Answers to be written on the exam sheet (or the pink setion of the exam sheet)
+%\otherinstructions[onexam]{}
+%\otherinstructions[onpinkexam]{}
+
+% Instructions for when yellow answer book with the rough work is to be submitted along the answers on either: the multichoice sheet, exam sheet or the pink exam sheet answers. 
+%\otherinstructions[mcq+roughwork]{}
+%\otherinstructions[onexam+roughwork]{}
+%\otherinstructions[onpinkexam+roughwork]{}
+
+% Instructions for when A4 leaflets (4-page line booklets) with the rough work are to be submitted along the answers on either: the answer book, the multichoice sheet, exam sheet or the pink exam sheet answers. 
+%\otherinstructions[ansbook+a4]{}
+%\otherinstructions[mcq+a4]{}
+%\otherinstructions[onexam+a4]{}
+%\otherinstructions[onpinkexam+a4]{}
+
+% Any additional instructions, can be inserted as text in the \otherinstructioncommand like so
+%\otherinstructions[mcq]{Additional instructions}
 
 
 %%%%%%%%%%%
