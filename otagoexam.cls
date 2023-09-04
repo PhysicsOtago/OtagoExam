@@ -304,6 +304,7 @@ The total number of marks for this exam is \totalmarks{}}
 \renewcommand{\labelenumiii}{(\roman{enumiii})}
 
 % Format section titles
+\renewcommand\thesection{\Alph{section}}
 \titleformat{\section}{\fontsize{11}{11}}{}{0cm}{\addul}
 \newcommand{\addul}[1]{\underline{Section \Alph{section}\ifthenelse{\equal{#1}{}}{}{: }#1}}
 
