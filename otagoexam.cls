@@ -6,7 +6,8 @@
 %\ProvidesClass{otagoexam}[2005/01/01 UoO Physics Exam v0.1, by mdbarrett]
 %\ProvidesClass{otagoexam}[2012/05/06 UoO Physics Exams v0.2, by Jevon]
 %\ProvidesClass{otagoexam}[2023/04/05 UoO Sciences Exams v0.3, by lechszym]
-\ProvidesClass{otagoexam}[2023/05/01 UoO Sciences Exams v0.4, by lechszym]
+%\ProvidesClass{otagoexam}[2023/05/01 UoO Sciences Exams v0.4, by lechszym]
+\ProvidesClass{otagoexam}[2023/09/04 UoO Sciences Exams v0.5, by lechszym]
 %---------------------------------------------------------------------
 % Initial Code
 %----------------------------------------------------------
