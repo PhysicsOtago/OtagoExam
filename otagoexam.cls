@@ -110,6 +110,7 @@
 \newcommand{\instructions}[1]{\renewcommand{\@instructions}{#1}}
 \newcommand{\providedmaterial}[1]{\renewcommand{\@providedmaterial}{#1}}
 \newcommand{\permittedmaterial}[1]{\renewcommand{\@permittedmaterial}{#1}}
+\newcommand{\embargoinstructions}[1]{{}}
 \newcommand{\otherinstructions}[2][ansbook]{\renewcommand{\@otherinstructions}{
 
     \ifthenelse{\equal{#1}{ansbook}}{%
