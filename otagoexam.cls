@@ -386,7 +386,7 @@ The total number of marks for this exam is \totalmarks{}}
     \fbox{
     \begin{minipage}{1\textwidth}
     Please check your desk and pockets for   
-    unauthorised items including cell
+    unauthorised items including cell phones
     \end{minipage}}
   
     \end{center}
