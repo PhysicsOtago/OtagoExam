@@ -7,7 +7,8 @@
 %\ProvidesClass{otagoexam}[2012/05/06 UoO Physics Exams v0.2, by Jevon]
 %\ProvidesClass{otagoexam}[2023/04/05 UoO Sciences Exams v0.3, by lechszym]
 %\ProvidesClass{otagoexam}[2023/05/01 UoO Sciences Exams v0.4, by lechszym]
-\ProvidesClass{otagoexam}[2023/09/04 UoO Sciences Exams v0.5, by lechszym]
+%\ProvidesClass{otagoexam}[2023/09/04 UoO Sciences Exams v0.5, by lechszym]
+\ProvidesClass{otagoexam}[2024/03/21 UoO Sciences Exams v0.6, by lechszym]
 %---------------------------------------------------------------------
 % Initial Code
 %----------------------------------------------------------
@@ -355,31 +356,40 @@ The total number of marks for this exam is \totalmarks{}}
 
       (\@papercode)
 
-      \vspace{3cm}
+      \vspace{2cm}
 
       PLEASE DO NOT
 
-      \vspace{1.2cm}
+      \vspace{1cm}
 
       TURN OVER YOUR
 
-      \vspace{1.2cm}
+      \vspace{1cm}
 
       EXAMINATION
 
-      \vspace{1.2cm}
+      \vspace{1cm}
 
       PAPER UNTIL
 
-      \vspace{1.2cm}
+      \vspace{1cm}
 
       INSTRUCTED TO
 
-      \vspace{1.2cm}
+      \vspace{1cm}
 
       DO SO
     \end{center}
 
+    \fontsize{28}{50}\selectfont
+    \begin{center}
+    \fbox{
+    \begin{minipage}{1\textwidth}
+    Please check your desk and pockets for   
+    unauthorised items including cell phones
+    \end{minipage}}
+  
+    \end{center}
 
     \rfoot{\fancyplain{}{}}
 
@@ -390,7 +400,7 @@ The total number of marks for this exam is \totalmarks{}}
 % Calculator pre-defines
 %---------------------------------------------------------------------
 \newcommand{\nocalculators}{
-    No calculators are premitted
+    No calculators are permitted
 }
 
 \newcommand{\listA}{
