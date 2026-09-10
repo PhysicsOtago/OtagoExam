@@ -528,7 +528,7 @@ The total number of marks for this exam is \totalmarks{}}
     \vspace{10pt}\\
     \begin{tabular}[c]{l l l l l l}
     $\alpha$ & $\equiv$ & $e^2/(4 \pi \varepsilon_0 \hbar c)$, &
-    $a_0$ & $\equiv$ & $4 \pi \varepsilon_0\hbar^2/(m_e c^2)=r_e/\alpha^2$,\\
+    $a_0$ & $\equiv$ & $4 \pi \varepsilon_0\hbar^2/(e^2 m_e)=r_e/\alpha^2$,\\
     $u$ & $\equiv$ & $\mathrm{mass }^{12}\mathrm{C\;atom}/12=(10^{-3}\;\mathrm{kg})/N_A$,&
     $r_e$ & $\equiv$ & $e^2/(4 \pi \varepsilon_0 m_e c^2)$,\\
     $\lambdabar_e$ & $\equiv$ & $\lambda_e/(2\pi)\equiv \hbar/(m_e c)=r_e/\alpha$, &
